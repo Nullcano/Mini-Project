@@ -1,0 +1,11 @@
+.cat {
+  position: absolute;
+  bottom: 32px;
+  left: 16px;
+  width: 440px;
+  height: 308px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}

@@ -1,0 +1,21 @@
+main {
+  position: relative;
+  width: 1024px;
+  height: 768px;
+  background: #444;
+  display: flex;
+}
+
+section, aside {
+  position: relative;
+  width: 50%;
+}
+
+aside {
+  background: #333;
+}
+
+.game-logo {
+  position: absolute;
+  top: -64px;
+}

@@ -1,0 +1,75 @@
+@using MiniProject.Models
+
+<div class="upgrades-container">
+  <div class="heading">Upgrades</div>
+
+  @foreach (var upgrade in upgrades) 
+  {
+    if (upgrade.UType == "Idle") {
+      <div class="upgrade idle">
+        <div class="upgrade-icon">
+          <img src="@upgrade.UIcon" alt="@upgrade.UName"/>
+        </div>
+        <div class="upgrade-info">
+          <span class="upgrade-name">@upgrade.UName</span>
+          <span class="upgrade-description">@upgrade.UDescription</span>
+          <span class="upgrade-effect">Effect: +@upgrade.UEffect LoC per second</span>
+          <span class="upgrade-cost">Cost: Deletes @upgrade.UCost LoC</span>
+        </div>
+      </div>
+    } else if (upgrade.UType == "Click") {
+      <div class="upgrade click">
+        <div class="upgrade-icon">
+          <img src="@upgrade.UIcon" alt="@upgrade.UName"/>
+        </div>
+        <div class="upgrade-info">
+          <span class="upgrade-name">@upgrade.UName</span>
+          <span class="upgrade-description">@upgrade.UDescription</span>
+          <span class="upgrade-effect">Effect: +@upgrade.UEffect LoC per click</span>
+          <span class="upgrade-cost">Cost: Deletes @upgrade.UCost LoC</span>
+        </div>
+      </div>
+    }
+  }
+</div>
+
+@code {
+  private IEnumerable<Upgrade> upgrades = new[] {
+    new Upgrade {
+      UId = 1,
+      UType = "Idle",
+      UName = "Felincer",
+      UDescription = "A feline freelancer that writes code for you.",
+      UIcon = "assets/felincer.png",
+      UEffect = 1,
+      UCost = 8,
+    },
+    new Upgrade {
+      UId = 2,
+      UType = "Click",
+      UName = "Clawboard",
+      UDescription = "A sturdy and claw-proof keyboard.",
+      UIcon = "assets/clawboard.png",
+      UEffect = 1,
+      UCost = 32,
+    },
+    new Upgrade {
+      UId = 3,
+      UType = "Idle",
+      UName = "P.A.W.S.",
+      UDescription = "“Program Automatically Without Scripting”",
+      UIcon = "assets/paws.png",
+      UEffect = 1,
+      UCost = 128,
+    },
+    new Upgrade {
+      UId = 4,
+      UType = "Click",
+      UName = "Tabby",
+      UDescription = "Intellisense to autocomplete code blocks.",
+      UIcon = "assets/tabby.png",
+      UEffect = 1,
+      UCost = 512,
+    },
+  };
+}

@@ -1,0 +1,32 @@
+.upgrades {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.upgrade {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 128px auto;
+  grid-template-rows: auto;
+  grid-gap: 1rem;
+}
+
+.upgrade-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.upgrade-stats {
+  display: flex;
+  flex-direction: column;
+}
+
+.upgrade-name {
+  font-size: 1.5rem;
+}
