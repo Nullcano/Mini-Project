@@ -1,8 +1,9 @@
 @inject LinesCurrentState LinesCurrentState
 @inject LinesClickState LinesClickState
 @inject LinesIdleState LinesIdleState
+@inject CatState CatState
 
-<div class="cat" @onclick="HandleClick" style="background-image: url(assets/paws-idle.gif)"></div>
+<div class="cat" @onclick="HandleClick" style="background-image: url(@CatState.UpdateCatSprite())"></div>
 
 @code {
   private void HandleClick()

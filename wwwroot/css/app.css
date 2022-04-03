@@ -11,6 +11,7 @@ html, body {
     display: grid;
     place-content: center;
     image-rendering: crisp-edges;
+    user-select: none;
 }
 
 img {
