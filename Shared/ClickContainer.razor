@@ -1,30 +1,12 @@
-@inherits FluxorComponent
+@inject LinesCurrentState LinesCurrentState
+@inject LinesClickState LinesClickState
+@inject LinesIdleState LinesIdleState
 
-@using MiniProject.Store
-
-@inject IDispatcher Dispatcher
-@inject IState<LocState> LocState
-
-<div class="cat" @onclick="IncrementCount" style="background-image: url(assets/paws-idle.gif)"></div>
+<div class="cat" @onclick="HandleClick" style="background-image: url(assets/paws-idle.gif)"></div>
 
 @code {
-  private void IncrementCount()
+  private void HandleClick()
   {
-    Dispatcher.Dispatch(new LocIncrementAction());
-  }
-
-  private void SaveCount()
-  {
-    Dispatcher.Dispatch(new LocPersistStateAction(LocState.Value));
-  }
-
-  private void LoadCount()
-  {
-    Dispatcher.Dispatch(new LocLoadStateAction());
-  }
-
-  private void ClearCount()
-  {
-    Dispatcher.Dispatch(new LocClearStateAction());
+    LinesCurrentState.LinesCurrent = LinesCurrentState.LinesCurrent + LinesClickState.LinesClick;
   }
 }

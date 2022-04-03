@@ -1,24 +1,22 @@
-@inherits FluxorComponent
-
-@using MiniProject.Store
-
-@inject IDispatcher Dispatcher
-@inject IState<LocState> LocState
+@inject LinesCurrentState LinesCurrentState
+@inject LinesClickState LinesClickState
+@inject LinesIdleState LinesIdleState
 
 <div class="playercard">
   <div class="player-icon" style="background-image:url('')"></div>
   <div class="player-info">
     <div class="player-name"># <span class="edit">🖊️</span></div>
     <div class="stats-container">
-      <span>has written @LocState.Value.CurrentLoc Lines of Code</span>
-      <span>(@LocState.Value.LocSec LoC/sec)</span>
+      <span>has written @LinesCurrentState.LinesCurrent Lines of Code</span>
+      <span>(@LinesIdleState.LinesIdle LoC/sec)</span>
     </div>
   </div>
 </div>
 
 @code {
-  protected override void OnInitialized()
+  protected async override void OnInitialized()
   {
-    Dispatcher.Dispatch(new LocLoopAction());
+    await Task.Delay(1000);
+    LinesCurrentState.LinesCurrent += LinesIdleState.LinesIdle;
   }
 }
