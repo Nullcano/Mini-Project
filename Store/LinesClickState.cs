@@ -1,6 +1,6 @@
 public class LinesClickState
 {
-  private int linesClick = 0;
+  private int linesClick = 1;
 
   public int LinesClick
   {

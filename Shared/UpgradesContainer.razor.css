@@ -10,11 +10,22 @@
 }
 
 .upgrade {
+  position: relative;
+  margin-bottom: -4px;
   padding: 1rem;
   display: grid;
   grid-template-columns: 128px auto;
   grid-template-rows: auto;
   grid-gap: 1rem;
+  border: 4px solid #222;
+  background: #333;
+  transition: transform .1s ease-in-out;
+  cursor: pointer;
+}
+
+.upgrade:hover {
+  transform: scale(1.1);
+  z-index: 9;
 }
 
 .upgrade-info {
@@ -28,5 +39,12 @@
 }
 
 .upgrade-name {
+  margin-bottom: .5rem;
+  display: flex;
+  justify-content: space-between;
   font-size: 1.5rem;
+}
+
+.upgrade-name span:last-child {
+  font-size: 1rem;
 }
