@@ -3,11 +3,75 @@
 @inject LinesIdleState LinesIdleState
 @inject CatState CatState
 
+<div class="syntax-container">
+  @if (renderSyntax)
+  {
+    <div class="syntax" style="background-image: url(@GenerateSyntax()); left: @(wordPos)%"></div>
+  }
+</div>
 <div class="cat" @onclick="HandleClick" style="background-image: url(@CatState.UpdateCatSprite())"></div>
 
 @code {
-  private void HandleClick()
+  private async void HandleClick()
   {
     LinesCurrentState.LinesCurrent += LinesClickState.LinesClick;
+    await RenderSyntax();
+  }
+  private int wordPos = 0;
+  private bool renderSyntax = false;
+  private string GenerateSyntax()
+  {
+    var random = new Random();
+    var words = new List<string>{
+      "assets/syntax/abstract.gif",
+      "assets/syntax/array.gif",
+      "assets/syntax/bool.gif",
+      "assets/syntax/break.gif",
+      "assets/syntax/catch.gif",
+      "assets/syntax/char.gif",
+      "assets/syntax/class.gif",
+      "assets/syntax/console.gif",
+      "assets/syntax/continue.gif",
+      "assets/syntax/do.gif",
+      "assets/syntax/double.gif",
+      "assets/syntax/else-if.gif",
+      "assets/syntax/else.gif",
+      "assets/syntax/enum.gif",
+      "assets/syntax/finally.gif",
+      "assets/syntax/for.gif",
+      "assets/syntax/foreach.gif",
+      "assets/syntax/get.gif",
+      "assets/syntax/if.gif",
+      "assets/syntax/int.gif",
+      "assets/syntax/interface.gif",
+      "assets/syntax/internal.gif",
+      "assets/syntax/list.gif",
+      "assets/syntax/math.gif",
+      "assets/syntax/namespace.gif",
+      "assets/syntax/override.gif",
+      "assets/syntax/private.gif",
+      "assets/syntax/protected.gif",
+      "assets/syntax/public.gif",
+      "assets/syntax/set.gif",
+      "assets/syntax/static.gif",
+      "assets/syntax/string.gif",
+      "assets/syntax/switch.gif",
+      "assets/syntax/try.gif",
+      "assets/syntax/using.gif",
+      "assets/syntax/while.gif"
+    };
+    int index = random.Next(words.Count);
+    return words[index];
+  }
+
+  private async Task RenderSyntax()
+  {
+    GenerateSyntax();
+    renderSyntax = true;
+    var random = new Random();
+    int wordPos = random.Next(0, 100);
+    await InvokeAsync(() => StateHasChanged());
+    await Task.Delay(2000);
+    renderSyntax = false;
   }
 }

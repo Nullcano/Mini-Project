@@ -28,8 +28,6 @@
 
 .stats-container {
   position: relative;
-  top: -1.5rem;
-  left: 6rem;
   display: flex;
   flex-direction: column;
 }

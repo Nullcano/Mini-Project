@@ -1,8 +1,8 @@
 public class LinesCurrentState
 {
-  private int linesCurrent = 0;
+  private double linesCurrent = 0;
 
-  public int LinesCurrent
+  public double LinesCurrent
   {
     get => linesCurrent;
     set

@@ -1,12 +1,15 @@
 @inject UpgradesState UpgradesState
+@inject LinesCurrentState LinesCurrentState
+@inject LinesClickState LinesClickState
+@inject LinesIdleState LinesIdleState
 
 <div class="upgrades-container">
-  <div class="heading">Upgrades</div>
+  <div class="heading"><span style="color:#00ff00">⏫</span> Upgrades</div>
 
-  @foreach (var upgrade in UpgradesState.upgrades) 
+  @foreach (var upgrade in UpgradesState.Upgrades) 
   {
     if (upgrade.Type == "Idle") {
-      <div class="upgrade idle">
+      <div class="upgrade idle" @onclick="@(() => this.BuyUpgrade(upgrade))">
         <div class="upgrade-icon">
           <img src="@upgrade.Icon" alt="@upgrade.Name"/>
         </div>
@@ -21,7 +24,7 @@
         </div>
       </div>
     } else if (upgrade.Type == "Click") {
-      <div class="upgrade click">
+      <div class="upgrade click" @onclick="@(() => this.BuyUpgrade(upgrade))">
         <div class="upgrade-icon">
           <img src="@upgrade.Icon" alt="@upgrade.Name"/>
         </div>
@@ -38,3 +41,19 @@
     }
   }
 </div>
+
+@code {
+  private void BuyUpgrade(UpgradesState.Upgrade upgrade) {
+    if (LinesCurrentState.LinesCurrent >= upgrade.Cost) {
+      LinesCurrentState.LinesCurrent -= upgrade.Cost;
+      upgrade.Level++;
+      upgrade.Cost = upgrade.Cost * 2;
+      if (upgrade.Type == "Idle") {
+        LinesIdleState.LinesIdle += upgrade.Effect;
+      } else if (upgrade.Type == "Click") {
+        LinesClickState.LinesClick += upgrade.Effect;
+      }
+      upgrade.Effect = upgrade.Effect * 2;
+    }
+  }
+}

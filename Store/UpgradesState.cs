@@ -12,7 +12,7 @@ public class UpgradesState
     public int Level { get; set; }
   }
 
-  public IEnumerable<Upgrade> upgrades = new[]
+  public IEnumerable<Upgrade> Upgrades = new[]
   {
     new Upgrade {
       Id = 1,

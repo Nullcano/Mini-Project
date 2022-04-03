@@ -1,8 +1,8 @@
 public class LinesClickState
 {
-  private int linesClick = 1;
+  private double linesClick = 1;
 
-  public int LinesClick
+  public double LinesClick
   {
     get => linesClick;
     set

@@ -1,8 +1,8 @@
 public class LinesIdleState
 {
-  private int linesIdle = 1;
+  private double linesIdle = 1;
 
-  public int LinesIdle
+  public double LinesIdle
   {
     get => linesIdle;
     set
