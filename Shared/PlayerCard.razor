@@ -12,7 +12,7 @@
     </div>
     <div class="stats-container">
       <span>has written @String.Format("{0:0.00}", LinesCurrentState.LinesCurrent) Lines of Code</span>
-      <span>(@LinesIdleState.LinesIdle LoC/sec)</span>
+      <span>(@String.Format("{0:0.00}", LinesIdleState.LinesIdle) LoC/sec)</span>
     </div>
   </div>
 </div>
@@ -24,9 +24,9 @@
   }
   private async Task AddLinesIdle()
   {
-    LinesCurrentState.LinesCurrent += LinesIdleState.LinesIdle;
+    await Task.Delay(100);
+    LinesCurrentState.LinesCurrent = LinesCurrentState.LinesCurrent + LinesIdleState.LinesIdle;
     LinesCurrentState.OnChange += StateHasChanged;
-    await Task.Delay(1000);
     await AddLinesIdle();
   }
 }

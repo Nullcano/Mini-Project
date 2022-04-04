@@ -70,8 +70,8 @@
     renderSyntax = true;
     var random = new Random();
     int wordPos = random.Next(0, 100);
-    await InvokeAsync(() => StateHasChanged());
     await Task.Delay(2000);
     renderSyntax = false;
+    await InvokeAsync(() => StateHasChanged());
   }
 }

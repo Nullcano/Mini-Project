@@ -8,6 +8,7 @@ html, body {
     font-family: 'Roboto Mono', monospace;
     background: hsl(343, 46%, 14%);
     color: #fff;
+    text-shadow: 2px 2px 0 #000;
     display: grid;
     place-content: center;
     image-rendering: crisp-edges;

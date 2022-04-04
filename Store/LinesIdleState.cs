@@ -1,6 +1,6 @@
 public class LinesIdleState
 {
-  private double linesIdle = 1;
+  private double linesIdle = 0.10;
 
   public double LinesIdle
   {

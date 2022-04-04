@@ -1,6 +1,6 @@
 public class LinesCurrentState
 {
-  private double linesCurrent = 0;
+  private double linesCurrent = 0.00;
 
   public double LinesCurrent
   {

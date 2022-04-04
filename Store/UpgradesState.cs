@@ -8,7 +8,7 @@ public class UpgradesState
     public string? Description { get; set; }
     public string? Icon { get; set; }
     public int Effect { get; set; }
-    public int Cost { get; set; }
+    public double Cost { get; set; }
     public int Level { get; set; }
   }
 
