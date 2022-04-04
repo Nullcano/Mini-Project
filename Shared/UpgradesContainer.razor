@@ -17,8 +17,8 @@
             <span>Lvl. @upgrade.Level</span>
           </div>
           <span class="upgrade-description">@upgrade.Description</span>
-          <span class="upgrade-effect">Effect: +@upgrade.Effect LoC per second</span>
-          <span class="upgrade-cost">Cost: Deletes @upgrade.Cost LoC</span>
+          <span class="upgrade-effect">Effect: +@(Math.Round(upgrade.Effect, 2)) LoC per second</span>
+          <span class="upgrade-cost">Cost: Deletes @(Math.Round(upgrade.Cost, 2)) LoC</span>
         </div>
       </div>
     } else if (upgrade.Type == "Click") {
@@ -30,8 +30,8 @@
             <span>Lvl. @upgrade.Level</span>
           </div>
           <span class="upgrade-description">@upgrade.Description</span>
-          <span class="upgrade-effect">Effect: +@upgrade.Effect LoC per click</span>
-          <span class="upgrade-cost">Cost: Deletes @upgrade.Cost LoC</span>
+          <span class="upgrade-effect">Effect: +@(Math.Round(upgrade.Effect, 2)) LoC per click</span>
+          <span class="upgrade-cost">Cost: Deletes @(Math.Round(upgrade.Cost, 2)) LoC</span>
         </div>
       </div>
     }
@@ -43,13 +43,13 @@
     if (LinesCurrentState.LinesCurrent >= upgrade.Cost) {
       LinesCurrentState.LinesCurrent -= upgrade.Cost;
       upgrade.Level++;
-      upgrade.Cost = upgrade.Cost * 2;
+      upgrade.Cost = upgrade.Cost * 1.2;
       if (upgrade.Type == "Idle") {
         LinesIdleState.LinesIdle += upgrade.Effect;
       } else if (upgrade.Type == "Click") {
         LinesClickState.LinesClick += upgrade.Effect;
       }
-      upgrade.Effect = upgrade.Effect * 2;
+      upgrade.Effect = upgrade.Effect * 1.2;
     }
   }
 }

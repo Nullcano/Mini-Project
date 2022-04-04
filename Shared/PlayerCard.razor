@@ -13,8 +13,8 @@
       <span class="edit">🖊️</span>
     </div>
     <div class="stats-container">
-      <span>has written @String.Format("{0:0.00}", LinesCurrentState.LinesCurrent) Lines of Code</span>
-      <span>(@String.Format("{0:0.00}", LinesIdleState.LinesIdle) LoC/sec)</span>
+      <span>has written @(Math.Round(LinesCurrentState.LinesCurrent, 2)) Lines of Code</span>
+      <span>(@(Math.Round(LinesIdleState.LinesIdle, 2)) LoC/sec)</span>
     </div>
   </div>
 </div>
@@ -25,14 +25,13 @@
     while (true)
     {
       AddLinesIdle();
-
-      await Task.Delay(1000);
+      await Task.Delay(100);
     }
   }
 
   private void AddLinesIdle()
   {
-    LinesCurrentState.LinesCurrent += LinesIdleState.LinesIdle;
+    LinesCurrentState.LinesCurrent += LinesIdleState.LinesIdle / 10;
     LinesCurrentState.OnChange += StateHasChanged;
   }
   
