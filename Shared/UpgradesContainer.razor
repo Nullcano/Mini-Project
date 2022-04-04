@@ -10,9 +10,7 @@
   {
     if (upgrade.Type == "Idle") {
       <div class="upgrade idle" @onclick="@(() => this.BuyUpgrade(upgrade))">
-        <div class="upgrade-icon">
-          <img src="@upgrade.Icon" alt="@upgrade.Name"/>
-        </div>
+        <div class="upgrade-icon" style="background-image: url(@upgrade.Icon)"></div>
         <div class="upgrade-info">
           <div class="upgrade-name">
             <span>@upgrade.Name</span>
@@ -25,9 +23,7 @@
       </div>
     } else if (upgrade.Type == "Click") {
       <div class="upgrade click" @onclick="@(() => this.BuyUpgrade(upgrade))">
-        <div class="upgrade-icon">
-          <img src="@upgrade.Icon" alt="@upgrade.Name"/>
-        </div>
+        <div class="upgrade-icon" style="background-image: url(@upgrade.Icon)"></div>
         <div class="upgrade-info">
           <div class="upgrade-name">
             <span>@upgrade.Name</span>

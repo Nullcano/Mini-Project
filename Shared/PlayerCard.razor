@@ -1,3 +1,5 @@
+@implements IDisposable
+
 @inject ProfileState ProfileState
 @inject LinesCurrentState LinesCurrentState
 @inject LinesClickState LinesClickState
@@ -20,13 +22,22 @@
 @code {
   protected async override void OnInitialized()
   {
-    await AddLinesIdle();
+    while (true)
+    {
+      AddLinesIdle();
+
+      await Task.Delay(1000);
+    }
   }
-  private async Task AddLinesIdle()
+
+  private void AddLinesIdle()
   {
-    await Task.Delay(100);
-    LinesCurrentState.LinesCurrent = LinesCurrentState.LinesCurrent + LinesIdleState.LinesIdle;
+    LinesCurrentState.LinesCurrent += LinesIdleState.LinesIdle;
     LinesCurrentState.OnChange += StateHasChanged;
-    await AddLinesIdle();
+  }
+  
+  void IDisposable.Dispose() 
+  {
+    LinesCurrentState.OnChange -= StateHasChanged;
   }
 }

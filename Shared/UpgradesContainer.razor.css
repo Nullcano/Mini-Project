@@ -28,6 +28,12 @@
   z-index: 9;
 }
 
+.upgrade-icon {
+  width: 108px;
+  height: 108px;
+  background-size: 108px 108px;
+}
+
 .upgrade-info {
   display: flex;
   flex-direction: column;

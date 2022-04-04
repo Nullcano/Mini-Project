@@ -19,7 +19,7 @@ public class UpgradesState
       Type = "Idle",
       Name = "Felincer",
       Description = "A feline freelancer that writes code for you.",
-      Icon = "assets/felincer.png",
+      Icon = "assets/felincer.gif",
       Effect = 1,
       Cost = 8,
       Level = 0
@@ -29,7 +29,7 @@ public class UpgradesState
       Type = "Click",
       Name = "Clawboard",
       Description = "A sturdy and claw-proof keyboard.",
-      Icon = "assets/clawboard.png",
+      Icon = "assets/clawboard.gif",
       Effect = 1,
       Cost = 32,
       Level = 0
@@ -39,7 +39,7 @@ public class UpgradesState
       Type = "Idle",
       Name = "P.A.W.S.",
       Description = "“Program Automatically Without Scripting”",
-      Icon = "assets/paws.png",
+      Icon = "assets/paws.gif",
       Effect = 1,
       Cost = 128,
       Level = 0
@@ -49,7 +49,7 @@ public class UpgradesState
       Type = "Click",
       Name = "Tabby",
       Description = "Intellisense to autocomplete code blocks.",
-      Icon = "assets/tabby.png",
+      Icon = "assets/tabby.gif",
       Effect = 1,
       Cost = 512,
       Level = 0
