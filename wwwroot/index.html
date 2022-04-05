@@ -15,6 +15,13 @@
 
   <body>
     <div id="app">Loading...</div>
-    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+    <script>
+      Blazor.start().then(function () {
+        var customScript = document.createElement('script');
+        customScript.setAttribute('src', 'app.js');
+        document.head.appendChild(customScript);
+      });
+    </script>
   </body>
 </html>

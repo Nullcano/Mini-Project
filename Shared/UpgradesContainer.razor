@@ -4,7 +4,10 @@
 @inject LinesIdleState LinesIdleState
 
 <div class="upgrades-container">
-  <div class="heading"><span style="color:#00ff00">⏫</span> Upgrades</div>
+  <div class="heading">
+    <div class="icon"></div>
+    <span>Upgrades</span>
+  </div>
 
   @foreach (var upgrade in UpgradesState.Upgrades) 
   {
@@ -50,6 +53,7 @@
         LinesClickState.LinesClick += upgrade.Effect;
       }
       upgrade.Effect = upgrade.Effect * 1.2;
+      this.StateHasChanged();
     }
   }
 }

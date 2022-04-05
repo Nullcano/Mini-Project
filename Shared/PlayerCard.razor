@@ -1,5 +1,3 @@
-@implements IDisposable
-
 @inject ProfileState ProfileState
 @inject LinesCurrentState LinesCurrentState
 @inject LinesClickState LinesClickState
@@ -20,23 +18,17 @@
 </div>
 
 @code {
-  protected async override void OnInitialized()
+  protected override void OnInitialized()
   {
-    while (true)
-    {
-      AddLinesIdle();
-      await Task.Delay(100);
-    }
+    AddLinesIdle();
   }
 
   private void AddLinesIdle()
   {
-    LinesCurrentState.LinesCurrent += LinesIdleState.LinesIdle / 10;
-    LinesCurrentState.OnChange += StateHasChanged;
-  }
-  
-  void IDisposable.Dispose() 
-  {
-    LinesCurrentState.OnChange -= StateHasChanged;
+    var timer = new Timer(new TimerCallback(_ =>
+    {
+      LinesCurrentState.LinesCurrent += LinesIdleState.LinesIdle / 10;
+      this.StateHasChanged();
+    }), null, 100, 100);
   }
 }

@@ -1,46 +1,63 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+﻿@font-face {
+  font-family: "Goodbye Despair";
+  src: url("../fonts/GoodbyeDespair.woff2") format("woff2"),
+    url("../fonts/GoodbyeDespair.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    font-family: 'Roboto Mono', monospace;
-    background: hsl(343, 46%, 14%);
-    color: #fff;
-    text-shadow: 2px 2px 0 #000;
-    display: grid;
-    place-content: center;
-    image-rendering: crisp-edges;
-    user-select: none;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Goodbye Despair", monospace;
+  background: hsl(343, 46%, 14%);
+  color: #fff;
+  font-size: 16px;
+  text-shadow: 2px 2px 0 #000;
+  display: grid;
+  place-content: center;
+  image-rendering: crisp-edges;
+  user-select: none;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 h1 {
-    color: #fff;
-    text-align: center;
-    font-weight: normal;
+  color: #fff;
+  text-align: center;
+  font-weight: normal;
 }
 
 button {
-    margin: 2rem;
-    background: none;
-    border: 0;
-    transform: scale(1);
-    transition: transform 0.2s ease-in-out;
+  margin: 2rem;
+  background: none;
+  border: 0;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
 }
 
 button:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 button:active {
-    transform: scale(1);
+  transform: scale(1);
 }
 
 button img {
-    width: 50%;
+  width: 50%;
+}
+
+.word {
+  position: absolute;
+  bottom: 128px;
+  width: 192px;
+  height: 28px;
+  background-size: contain;
 }
