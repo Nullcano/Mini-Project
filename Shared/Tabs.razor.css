@@ -1,0 +1,24 @@
+.tab-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.tab {
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tab:hover, .tab-active {
+  background: rgba(0,0,0,.5);
+}
+
+.tab .icon {
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+}

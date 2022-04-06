@@ -1,0 +1,65 @@
+@inject AchievementsState AchievementsState
+@inject LinesCurrentState LinesCurrentState
+@inject Formatter Formatter
+
+<div class="achievements-container">
+  @foreach (var achievement in AchievementsState.Achievements) 
+  {
+    if (achievement.Unlocked && !achievement.Claimed) 
+    {
+      <div class="achievement unlocked" @onclick="@(() => this.ClaimReward(achievement))">
+        <div class="achievement-icon" style="background-image: url(@achievement.Icon)"></div>
+        <div class="achievement-info">
+          <div class="achievement-name">
+            <span>@achievement.Name</span>
+            <span>Unlocked!</span>
+          </div>
+          <span class="achievement-description">@achievement.Description</span>
+          <span class="achievement-reward">Claim Reward!</span>
+        </div>
+      </div>
+    }
+    else if (achievement.Claimed)
+    {
+      <div class="achievement unlocked">
+        <div class="achievement-icon" style="background-image: url(@achievement.Icon)"></div>
+        <div class="achievement-info">
+          <div class="achievement-name">
+            <span>@achievement.Name</span>
+            <span>Unlocked!</span>
+          </div>
+          <span class="achievement-description">@achievement.Description</span>
+          <span class="achievement-reward">Reward: @(Formatter.FormatNum(achievement.Reward))</span>
+        </div>
+      </div>
+    }
+    else
+    {
+      <div class="achievement locked">
+        <div class="achievement-icon" style="background-image: url(@achievement.Icon)"></div>
+        <div class="achievement-info">
+          <div class="achievement-name">
+            <span>@achievement.Name</span>
+            <span>[Locked]</span>
+          </div>
+          <span class="achievement-description">@achievement.Description</span>
+          <span class="achievement-reward">Reward: @(Formatter.FormatNum(achievement.Reward)) LoC</span>
+        </div>
+      </div>
+    }
+  }
+</div>
+
+@code {
+  private void ClaimReward(AchievementsState.Achievement achievement) {
+    if (!achievement.Claimed)
+    {
+      achievement.Claimed = true;
+      LinesCurrentState.LinesCurrent += achievement.Reward;
+    }
+    else
+    {
+      return;
+    }
+  }
+}

@@ -1,12 +1,46 @@
-<main>
+@inject AchievementsState AchievementsState
+@inject UpgradesState UpgradesState
+@inject LinesCurrentState LinesCurrentState
+
+<main @onclick="AchievementCheck">
   <section>
     <div class="wall"></div>
     <div class="floor"></div>
-    <PlayerCard/>
-    <ClickContainer/>
+    <PlayerCard />
+    <ClickContainer />
   </section>
   <aside>
-    <UpgradesContainer/>
+    <Tabs>
+      <Tab Icon="../assets/upgrades-icon.gif" Text="Upgrades" Value="Tab1">
+        <UpgradesContainer />
+      </Tab>
+      <Tab Icon="../assets/achievements-icon.gif" Text="Achievements" Value="Tab2">
+        <AchievementsContainer />
+      </Tab>
+    </Tabs>
   </aside>
-  <img class="game-logo" src="../game-logo.png" alt="Fe:Lines of Code"/>
+  <img class="game-logo" src="../game-logo.png" alt="Fe:Lines of Code" />
 </main>
+
+
+@code {
+  public void AchievementCheck()
+  {
+    if (UpgradesState.Upgrades[0].Level >= 10)
+    {
+      AchievementsState.Achievements[0].Unlocked = true;
+    }
+    if (UpgradesState.Upgrades[1].Level >= 10)
+    {
+      AchievementsState.Achievements[1].Unlocked = true;
+    }
+    if (UpgradesState.Upgrades[2].Level >= 10)
+    {
+      AchievementsState.Achievements[2].Unlocked = true;
+    }
+    if (UpgradesState.Upgrades[3].Level >= 10)
+    {
+      AchievementsState.Achievements[3].Unlocked = true;
+    }
+  }
+}

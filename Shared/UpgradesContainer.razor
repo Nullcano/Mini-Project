@@ -2,14 +2,10 @@
 @inject LinesCurrentState LinesCurrentState
 @inject LinesClickState LinesClickState
 @inject LinesIdleState LinesIdleState
+@inject AchievementsState AchievementsState
 @inject Formatter Formatter
 
 <div class="upgrades-container">
-  <div class="heading">
-    <div class="icon"></div>
-    <span>Upgrades</span>
-  </div>
-
   @foreach (var upgrade in UpgradesState.Upgrades) 
   {
     if (upgrade.Type == "Idle") {
@@ -54,7 +50,6 @@
         LinesClickState.LinesClick += upgrade.Effect;
       }
       upgrade.Effect = upgrade.Effect * 1.2;
-      this.StateHasChanged();
     }
   }
 }

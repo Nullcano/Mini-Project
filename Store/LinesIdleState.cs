@@ -11,7 +11,6 @@ public class LinesIdleState
       NotifyStateChanged();
     }
   }
-
   public event Action? OnChange;
 
   private void NotifyStateChanged() => OnChange?.Invoke();

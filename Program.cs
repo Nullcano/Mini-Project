@@ -22,6 +22,7 @@ namespace MiniProject
       builder.Services.AddSingleton<LinesClickState>();
       builder.Services.AddSingleton<LinesIdleState>();
       builder.Services.AddSingleton<UpgradesState>();
+      builder.Services.AddSingleton<AchievementsState>();
       builder.Services.AddBlazoredLocalStorage(config =>
       {
         config.JsonSerializerOptions.WriteIndented = true;
