@@ -14,7 +14,7 @@ cat.addEventListener('click', function() {
   syntaxContainer.appendChild(word);
 
   let start, previousTimeStamp;
-  let done = false
+  let done = false;
 
   const step = (timestamp) => {
 

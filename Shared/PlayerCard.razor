@@ -2,6 +2,8 @@
 @inject LinesCurrentState LinesCurrentState
 @inject LinesClickState LinesClickState
 @inject LinesIdleState LinesIdleState
+@inject Formatter Formatter
+@implements IDisposable
 
 <div class="playercard">
   <div class="player-icon" style="background-image:url(@ProfileState.PlayerIcon)"></div>
@@ -11,8 +13,8 @@
       <span class="edit">🖊️</span>
     </div>
     <div class="stats-container">
-      <span>has written @(Math.Round(LinesCurrentState.LinesCurrent, 2)) Lines of Code</span>
-      <span>(@(Math.Round(LinesIdleState.LinesIdle, 2)) LoC/sec)</span>
+      <span>has written @(Formatter.FormatNum(LinesCurrentState.LinesCurrent)) Lines of Code</span>
+      <span>(@(Formatter.FormatNum(LinesIdleState.LinesIdle)) LoC/sec)</span>
     </div>
   </div>
 </div>
@@ -20,15 +22,29 @@
 @code {
   protected override void OnInitialized()
   {
+    LinesCurrentState.OnChange += LogAndUpdate;
     AddLinesIdle();
+  }
+
+  Timer? timer = default;
+
+  private void LogAndUpdate()
+  {
+    //Console.WriteLine($"Lines: {LinesCurrentState.LinesCurrent}");
+    StateHasChanged();
   }
 
   private void AddLinesIdle()
   {
-    var timer = new Timer(new TimerCallback(_ =>
+    timer = new Timer(new TimerCallback(_ =>
     {
       LinesCurrentState.LinesCurrent += LinesIdleState.LinesIdle / 10;
-      this.StateHasChanged();
     }), null, 100, 100);
   }
+
+  void IDisposable.Dispose()
+  {
+    LinesCurrentState.OnChange -= LogAndUpdate;
+  }
+
 }

@@ -2,6 +2,7 @@
 @inject LinesCurrentState LinesCurrentState
 @inject LinesClickState LinesClickState
 @inject LinesIdleState LinesIdleState
+@inject Formatter Formatter
 
 <div class="upgrades-container">
   <div class="heading">
@@ -20,8 +21,8 @@
             <span>Lvl. @upgrade.Level</span>
           </div>
           <span class="upgrade-description">@upgrade.Description</span>
-          <span class="upgrade-effect">Effect: +@(Math.Round(upgrade.Effect, 2)) LoC per second</span>
-          <span class="upgrade-cost">Cost: Deletes @(Math.Round(upgrade.Cost, 2)) LoC</span>
+          <span class="upgrade-effect">Effect: +@(Formatter.FormatNum(upgrade.Effect)) LoC per second</span>
+          <span class="upgrade-cost">Cost: Deletes @(Formatter.FormatNum(upgrade.Cost)) LoC</span>
         </div>
       </div>
     } else if (upgrade.Type == "Click") {
@@ -33,8 +34,8 @@
             <span>Lvl. @upgrade.Level</span>
           </div>
           <span class="upgrade-description">@upgrade.Description</span>
-          <span class="upgrade-effect">Effect: +@(Math.Round(upgrade.Effect, 2)) LoC per click</span>
-          <span class="upgrade-cost">Cost: Deletes @(Math.Round(upgrade.Cost, 2)) LoC</span>
+          <span class="upgrade-effect">Effect: +@(Formatter.FormatNum(upgrade.Effect)) LoC per click</span>
+          <span class="upgrade-cost">Cost: Deletes @(Formatter.FormatNum(upgrade.Cost)) LoC</span>
         </div>
       </div>
     }
