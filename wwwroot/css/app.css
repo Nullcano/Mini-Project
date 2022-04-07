@@ -61,3 +61,27 @@ button img {
   height: 28px;
   background-size: contain;
 }
+
+.blazored-modal {
+  width: 512px;
+  height: 448px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group input {
+  padding: 4px 8px;
+  border: 0;
+  border-bottom: 1px solid #fff;
+  background: none;
+  color: #fff;
+  font-size: 24px;
+  text-shadow: inherit;
+  font-family: inherit;
+}

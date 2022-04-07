@@ -1,4 +1,6 @@
 using Blazored.LocalStorage;
+using Blazored.Toast;
+using Blazored.Modal;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -15,7 +17,7 @@ namespace MiniProject
       var builder = WebAssemblyHostBuilder.CreateDefault(args);
       builder.RootComponents.Add<App>("#app");
       builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-      builder.Services.AddSingleton<ProfileState>();
+      builder.Services.AddSingleton<PlayerCardState>();
       builder.Services.AddSingleton<CatState>();
       builder.Services.AddSingleton<Formatter>();
       builder.Services.AddSingleton<LinesCurrentState>();
@@ -23,6 +25,8 @@ namespace MiniProject
       builder.Services.AddSingleton<LinesIdleState>();
       builder.Services.AddSingleton<UpgradesState>();
       builder.Services.AddSingleton<AchievementsState>();
+      builder.Services.AddBlazoredToast();
+      builder.Services.AddBlazoredModal();
       builder.Services.AddBlazoredLocalStorage(config =>
       {
         config.JsonSerializerOptions.WriteIndented = true;
