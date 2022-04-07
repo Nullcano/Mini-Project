@@ -1,15 +1,15 @@
-@inject ProfileState ProfileState
+@inject PlayerCardState PlayerCardState
 @inject LinesCurrentState LinesCurrentState
 @inject LinesClickState LinesClickState
 @inject LinesIdleState LinesIdleState
 @inject Formatter Formatter
 @implements IDisposable
 
-<div class="playercard">
-  <div class="player-icon" style="background-image:url(@ProfileState.PlayerIcon)"></div>
+<div class="playercard" @onclick="ShowModal">
+  <div class="player-icon" style="background-image:url(@PlayerCardState.PlayerIcon)"></div>
   <div class="player-info">
     <div class="player-name">
-      <span>@ProfileState.Playername</span>
+      <span>@PlayerCardState.Playername</span>
     </div>
     <div class="stats-container">
       <span>has written @(Formatter.FormatNum(LinesCurrentState.LinesCurrent)) Lines of Code</span>
@@ -18,7 +18,12 @@
   </div>
 </div>
 
+@("Modal.Show<EditProfile>(\"Edit Playercard\", options);")
+
 @code {
+  [CascadingParameter] public IModalService Modal { get; set; } = default!;
+  void ShowModal() => Modal.Show<EditProfile>("Edit Playercard");
+  
   protected override void OnInitialized()
   {
     LinesCurrentState.OnChange += LogAndUpdate;

@@ -1,6 +1,8 @@
+@using Blazored.Toast.Configuration
 @inject AchievementsState AchievementsState
 @inject UpgradesState UpgradesState
 @inject LinesCurrentState LinesCurrentState
+@inject IToastService toastService
 
 <main @onclick="AchievementCheck">
   <section>
@@ -19,6 +21,13 @@
       </Tab>
     </Tabs>
   </aside>
+  <BlazoredToasts Position="ToastPosition.BottomRight" Timeout="10">
+    <CloseButtonContent>
+      <div>
+        <span>&times;</span>
+      </div>
+    </CloseButtonContent>
+  </BlazoredToasts>
   <img class="game-logo" src="../game-logo.png" alt="Fe:Lines of Code" />
 </main>
 

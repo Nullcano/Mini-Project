@@ -16,6 +16,7 @@
   left: 0;
   width: 100%;
   height: calc(100% - 128px);
+  pointer-events: none;
 }
 
 .syntax {

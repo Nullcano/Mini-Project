@@ -15,7 +15,7 @@ public class AchievementsState
   {
     new Achievement {
       Id = 1,
-      Name = "Stainless Steel",
+      Name = "Scratchless Steel",
       Description = "Reach Clawboard level 10.",
       Icon = "../assets/achievements/stainless-steel.gif",
       Reward = 1024,
