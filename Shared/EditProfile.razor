@@ -7,8 +7,9 @@
 
     <div class="form-group">
       <label for="message">Change Playername</label>
-      <InputText @bind-Value="_form.NewPlayername" class="form-control" placeholder="@PlayerCardState.Playername" />
-      <ValidationMessage For="@(() => _form.NewPlayername)" />
+      <InputText @bind-Value="PlayerCardState.Playername" class="form-control"
+        placeholder="@PlayerCardState.Playername" />
+      <ValidationMessage For="@(() => PlayerCardState.Playername)" />
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -22,12 +23,12 @@
 
   protected override void OnInitialized() => BlazoredModal.SetTitle("Edit Playercard");
 
-  async Task SubmitForm() => await BlazoredModal.CloseAsync(ModalResult.Ok(_form.NewPlayername));
+  async Task SubmitForm() => await BlazoredModal.CloseAsync(ModalResult.Ok(PlayerCardState.Playername));
   async Task Cancel() => await BlazoredModal.CancelAsync();
 
   public class Form
   {
     [Required(ErrorMessage = "You forgot to enter a name")]
-    public string? NewPlayername { get; set; }
+    public string? Playername { get; set; }
   }
 }

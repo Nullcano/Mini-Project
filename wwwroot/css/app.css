@@ -28,6 +28,7 @@ img {
   max-width: 100%;
   height: auto;
 }
+
 h1 {
   color: #fff;
   text-align: center;
@@ -60,6 +61,14 @@ button img {
   width: 192px;
   height: 28px;
   background-size: contain;
+}
+
+.blazored-modal-container {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1024px;
+  height: 768px;
 }
 
 .blazored-modal {

@@ -1,0 +1,15 @@
+button {
+  padding: 8px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn-primary {
+  border: 2px solid green;
+  color: #fff;
+}
+
+.btn-secondary {
+  border: 2px solid red;
+  color: #fff;
+}
